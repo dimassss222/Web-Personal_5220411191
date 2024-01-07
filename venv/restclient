@@ -1,0 +1,93 @@
+from flask import Flask, request, jsonify
+from flask_mysqldb import MySQL
+from flask_restful import Api, Resource
+
+app = Flask(__name__)
+api = Api(app)
+
+app.secret_key = '2312'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'db_Dim'
+mysql = MySQL(app)
+
+class LoginResource(Resource):
+    def post(self):
+        data = request.get_json()
+        username = data.get('inpUsername')
+        password = data.get('inpPass')
+
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM tbl_akun where username = %s and password = %s", (username, password))
+        result = cur.fetchone()
+        cur.close()
+
+        if result:
+            return {'message': 'Login successful'}, 200
+        else:
+            return {'message': 'Invalid credentials'}, 401
+
+api.add_resource(LoginResource, '/login')
+
+class RegisterResource(Resource):
+    def post(self):
+        data = request.get_json()
+        nama = data.get('nama')
+        username = data.get('username')
+        password = data.get('password')
+        email = data.get('email')
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO tbl_akun (nama, username, password, email) VALUES (%s, %s, %s, %s)", (nama, username, password, email))
+        mysql.connection.commit()
+        cur.close()
+
+        return {'status': 'success', 'message': 'User registered successfully'}, 201
+
+api.add_resource(RegisterResource, '/register')
+
+class SimpanResource(Resource):
+    def post(self):
+        data = request.get_json()
+        nama = data.get('nama')
+        jumlah = data.get('jumlah')
+        ukuran = data.get('ukuran')
+        harga = data.get('harga')
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO tbl_pesananuser(nama, jumlah, ukuran, harga) VALUES (%s, %s, %s, %s)", (nama, jumlah, ukuran, harga)) 
+        mysql.connection.commit()
+        cur.close()
+
+        return {'message': 'Data saved successfully'}, 201
+
+api.add_resource(SimpanResource, '/simpan')
+
+class KeranjangResource(Resource):
+    def get(self):
+        cur = mysql.connection.cursor() 
+        cur.execute("SELECT * FROM tbl_pesananuser")
+        data = cur.fetchall()
+        cur.close()
+
+        return jsonify(data)
+
+api.add_resource(KeranjangResource, '/keranjang')
+
+class LandingpageResource(Resource):
+    def get(self):
+        # Logika untuk landing page
+        return {'message': 'Welcome to the landing page'}, 200
+
+api.add_resource(LandingpageResource, '/landingpage')
+
+class AfterloginResource(Resource):
+    def get(self):
+        # Logika untuk halaman setelah login
+        return {'message': 'Welcome after login'}, 200
+
+api.add_resource(AfterloginResource, '/afterlogin')
+
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Halaman Login</title>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background: rgb(219, 226, 226);
+    }
+
+    .row{
+        background: white;
+        border-radius: 25px;
+    }
+
+    img{
+        margin-left: -10px;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .btn1{
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .btn1:hover{
+        background: white;
+        border: 1px solid;
+        color: black;
+    }
+
+    p{
+        font-size: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<body>
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img src="{{ url_for('static',filename='loginbanner.jpg')}}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-7 px-5 pt-5">
+                    <h3>STONE IS STORE</h3>
+                    <p>Masuk Menuju Akun Anda </p>
+                    <form method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input name="inpUsername" placeholder="Username" type="username" class="form-control my-3 p-2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input name="inpPass" placeholder="Password" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn1 mt-2 mb-4">Login</button>
+                            </div>
+                        </div>
+                        <p>Belum punya akun? <a href="/register">Daftar disini!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'layout.html'%}
+{% block head %} 
+<title>Daftar </title> 
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background: rgb(219, 226, 226);
+    }
+
+    .row{
+        background: white;
+        border-radius: 25px;
+    }
+
+    img{
+        margin-left: -10px;
+        width: 100%;
+        border-top-left-radius:30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .btn1{
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .btn1:hover{
+        background: white;
+        border: 1px solid;
+        color: black;
+    }
+
+</style>
+{% endblock %}
+{% block body%}
+
+<body>
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-xl-5 row-cols-xxl-auto">
+                    <img src="{{ url_for('static',filename='loginbanner.jpg')}}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-7 px-5 pt-5">
+                    <h4>Daftar Akun Sekarang </h4>
+                    <form id="contact" action="/register" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="nama" name="nama" id="nama" class="form-control" placeholder="Nama" autocomplete="on" required />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="username" name="username" id="username" class="form-control" placeholder="Username" autocomplete="on" required />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="password" name="password" id="nama" class="form-control" placeholder="Password" autocomplete="on" required />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" autocomplete="on" required />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn1 mt-2 mb-4" onclick="alertregister()">Daftar </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

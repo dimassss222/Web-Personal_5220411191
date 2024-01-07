@@ -1,0 +1,644 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>LandingPage</title>
+<style>
+  header {
+    height: 50%;
+}
+
+  header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -2;
+    width: 100%;
+}
+
+  header .intro {
+    text-shadow: 5px 5px 10px rgb(162, 62, 0);
+    margin-top: 250px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+}
+
+  header .intro h3 {
+    color: white;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0px 20px;
+    position: relative;
+    font-size: 13px;   
+}
+
+.navbar ul li a{
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    transition: 0.5s;   
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+  .tombol {
+    background-color: rgb(162, 62, 0);
+    height: 40px;
+    line-height: 42px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0px 20px 0px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+  .tombol:hover{
+    background: white;
+    border: 1px solid;
+    color: rgb(162, 62, 0);
+}
+
+  .judul-carrousel h1{
+    text-align: center;
+    justify-content: center;
+    margin-top: 300px;
+}
+  .carousel{
+    margin-left: 250px;
+    width:640px;
+    height:360px;
+ }
+
+  .card{
+    margin-left: 50px;
+ }
+ 
+  h1{
+    text-shadow: 5px 5px 10px rgb(162, 62, 0);
+    text-align: center;
+    justify-content: center;
+    margin-top: 100px;
+ }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<body>
+<!--Navigasi-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#about">Stone Is <strong>Store </strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#new-arrival">New Arrival</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#product">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/keranjang">Keranjang</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!--End of Navigasi-->
+
+<!--Banner-->
+  <header id="home">
+    <img src="{{ url_for('static',filename='1.jpg')}}" style="width: 100%; height: 100%;">
+    <div class="intro">
+        <h3>Selamat Datang Di Website Stone Is Store </h3>
+        <br>
+        <p>
+          <a href="#product" class="tombol">MORE INFO</a>
+        </p>
+    </div>
+  </header>
+ 
+
+<!--Carrousel-->
+  <div class="container">
+    <div class="judul-carrousel">
+      <h1 id="new-arrival">NEW ARRIVAL!</h1>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('static',filename='1.jpg')}}" class="d-block img-fluid" alt="Gambar 1">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static',filename='2.jpg')}}" class="d-block img-fluid" alt="Gambar 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static',filename='New Arrival 3.jpg')}}" class="d-block img-fluid" alt="Gambar 3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+<!-- End Of Carrousel-->
+
+<!--Card-->
+  <h1 id="product">Our Product</h1>
+  <div class="row text-center row-container">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ url_for('static',filename='4.jpg')}}" class="card-img-top" alt="...">
+      <form action="/simpan" method="POST">
+      <ul class="list-group list-group-flush">
+        <div class="nama">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center; " id="nama" name="nama">
+              <option selected>Nama Sepatu</option>
+              <option value="Classic Chuck">Classic Chuck</option>
+            </select>
+          </li>
+        </div>
+        <div class="jumlah">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="jumlah" name="jumlah">
+              <option selected>Jumlah</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">3</option>
+              <option value="5">4</option>
+              <option value="6">5</option>
+              <option value="7">6</option>
+            </select>
+          </li>
+        </div>
+        <div class="ukuran">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="ukuran" name="ukuran">
+              <option selected>Size</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+              <option value="46">46</option>
+              <option value="47">47</option>
+            </select>
+          </li>
+        </div>
+        <div class="harga">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="harga" name="harga">
+                <option selected>Harga/pcs</option>
+                <option value="890000">Rp 890.000</option>
+            </select>
+          </li>
+        </div>
+      </ul>
+      <div class="card-body">
+        <button type="submit" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='5.jpg')}}" class="card-img-top" alt="...">
+      <form action="/simpan" method="POST">
+      <ul class="list-group list-group-flush">
+        <div class="nama">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="nama" name="nama">
+              <option selected>Nama Sepatu</option>
+              <option value="Chuck 70">Chuck 70</option>
+            </select>
+          </li>
+        </div>
+        <div class="jumlah">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="jumlah" name="jumlah">
+              <option selected>Jumlah</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">3</option>
+              <option value="5">4</option>
+              <option value="6">5</option>
+              <option value="7">6</option>
+            </select>
+          </li>
+        </div>
+        <div class="ukuran">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="ukuran" name="ukuran">
+              <option selected>Size</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+              <option value="46">46</option>
+            </select>
+          </li>
+        </div>
+        <div class="harga">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;"id="harga" name="harga">
+                <option selected>Harga/pcs</option>
+                <option value="1000000">Rp 1.000.000</option>
+            </select>
+          </li>
+        </div>
+      </ul>
+      <div class="card-body">
+        <button type="submit" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='6.jpg')}}" class="card-img-top" alt="...">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Nama Sepatu</option>
+            <option value="Elevation">Elevation</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Jumlah</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+            <option value="6">5</option>
+            <option value="7">6</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Size</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+              <option selected>Harga/pcs</option>
+              <option value="1.299.000">Rp 1.299.000</option>
+          </select>
+        </li>
+      </ul>
+      <div class="card-body">
+        <button type="button" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='7.jpg')}}" class="card-img-top" alt="...">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Nama Sepatu</option>
+            <option value="Kids">Kids</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Jumlah</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+            <option value="6">5</option>
+            <option value="7">6</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Size</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+              <option selected>Harga/pcs</option>
+              <option value="700000">Rp 700.000</option>
+          </select>
+        </li>
+      </ul>
+      <div class="card-body">
+        <button type="button" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row text-center row-container">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ url_for('static',filename='8.jpg')}}" class="card-img-top" alt="...">
+      <form action="/simpan" method="POST">
+      <ul class="list-group list-group-flush">
+        <div class="nama">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center; " id="nama" name="nama">
+              <option selected>Nama Sepatu</option>
+              <option value="Chuck 70 Floral">Chuck 70 Floral</option>
+            </select>
+          </li>
+        </div>
+        <div class="jumlah">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="jumlah" name="jumlah">
+              <option selected>Jumlah</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">3</option>
+              <option value="5">4</option>
+              <option value="6">5</option>
+              <option value="7">6</option>
+            </select>
+          </li>
+        </div>
+        <div class="ukuran">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="ukuran" name="ukuran">
+              <option selected>Size</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+              <option value="46">46</option>
+              <option value="47">47</option>
+            </select>
+          </li>
+        </div>
+        <div class="harga">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="harga" name="harga">
+                <option selected>Harga/pcs</option>
+                <option value="1.299.000">1.299.000</option>
+            </select>
+          </li>
+        </div>
+      </ul>
+      <div class="card-body">
+        <button type="submit" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='9.jpg')}}" class="card-img-top" alt="...">
+      <form action="/simpan" method="POST">
+      <ul class="list-group list-group-flush">
+        <div class="nama">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="nama" name="nama">
+              <option selected>Nama Sepatu</option>
+              <option value="Chuck 70 Much Love">Chuck 70 Much Love</option>
+            </select>
+          </li>
+        </div>
+        <div class="jumlah">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="jumlah" name="jumlah">
+              <option selected>Jumlah</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">3</option>
+              <option value="5">4</option>
+              <option value="6">5</option>
+              <option value="7">6</option>
+            </select>
+          </li>
+        </div>
+        <div class="ukuran">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;" id="ukuran" name="ukuran">
+              <option selected>Size</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+              <option value="46">46</option>
+            </select>
+          </li>
+        </div>
+        <div class="harga">
+          <li class="list-group-item">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;"id="harga" name="harga">
+                <option selected>Harga/pcs</option>
+                <option value="1.599.000">Rp 1.599.000</option>
+            </select>
+          </li>
+        </div>
+      </ul>
+      <div class="card-body">
+        <button type="submit" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='10.jpg')}}" class="card-img-top" alt="...">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Nama Sepatu</option>
+            <option value="Chuck Taylor All Star Cx Canvas and Polyester">Chuck Taylor All Star Cx Canvas and Polyester</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Jumlah</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+            <option value="6">5</option>
+            <option value="7">6</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Size</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+              <option selected>Harga/pcs</option>
+              <option value="1.299.000">Rp 1.299.000</option>
+          </select>
+        </li>
+      </ul>
+      <div class="card-body">
+        <button type="button" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;" >
+      <img src="{{ url_for('static',filename='11.jpg')}}" class="card-img-top" alt="...">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Nama Sepatu</option>
+            <option value="Chuck Taylor All Star Stitched Recycled Canvas">Chuck Taylor All Star Stitched Recycled Canvas</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Jumlah</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+            <option value="6">5</option>
+            <option value="7">6</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+            <option selected>Size</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="text-align: center;">
+              <option selected>Harga/pcs</option>
+              <option value="899.000">Rp 899.000</option>
+          </select>
+        </li>
+      </ul>
+      <div class="card-body">
+        <button type="button" class="btn btn-outline-dark">Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+
+  <!--End Of Card-->
+
+  <!--Footer-->
+    <footer class="text-center text-white" style="background-color: rgb(43, 43, 43)">
+      <div class="container">
+        <section class="mt-5">
+          <div class="row text-center d-flex justify-content-center pt-5">
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#about" class="text-white">About us</a>
+              </h6>
+            </div>
+
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#product" class="text-white">Products</a>
+              </h6>
+            </div>
+
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#new-arrival" class="text-white">New Arrival</a>
+              </h6>
+            </div>
+
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#about" class="text-white">Contact</a>
+              </h6>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+        <section class="mb-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h6 id="about"><bold>About ConversStation</bold></h6>
+              <p style="font-size: 12px;">
+                Stone Is Store  adalah toko sepatu yang terletak di Jatiwaringin
+                Tepatnya di Jl.kh.Muammir , toko ini berdiri pada tahun
+                2023, banyak pilihan sepatu convers yang bisa kalian temukan disini.
+                Banyak discount yang menarik yang kami tawarkan untuk kalian  
+                dimanapun kalian berada. Website ini diciptakan untuk mempermudah proses 
+                transaksi dengan kalian yang berada di luar Bekasi, atau mungkin lebih jauh lagi.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="text-center mb-3">
+          <a href="https://facebook.com/madara.bou.58/?locale=id_ID" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://google.com/dimznug22@gmail.com/" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="https://instagram.com/https://dimm_nug/" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </section>
+      </div>
+
+      <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" style="text-decoration: none;">Dimas Anugrah Putra </a>
+        </a>
+      </div>
+    </footer>
+<!--End Of Footer-->
+</body>
+{% endblock %}
